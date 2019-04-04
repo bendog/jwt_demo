@@ -1,0 +1,38 @@
+{
+  "common": {
+    "aws_region": "ap-southeast-2",
+    "profile_name": "bendog",
+    "project_name": "jwt-demo",
+    "runtime": "python3.7",
+    "s3_bucket": "bendog-zappa-deploy",
+    "keep_warm": false,
+    "certificate_arn": "arn:<<for benjamin.dog domain>>",
+    "aws_environment_variables": {
+      "SECRET_KEY": "pdpdmeetup",
+      "JWT_EXPIRATION_MINUTES": "1"
+    }
+  },
+  "login": {
+    "lambda_description": "user login api",
+    "extends": "common",
+    "domain": "login.benjamin.dog",
+    "app_function": "login.app"
+  },
+  "authorizer": {
+    "lambda_description": "a custom api gateway authorizer",
+    "extends": "common",
+    "lambda_handler": "authorizer.lambda_handler",
+    "apigateway_endabled": false
+  },
+  "whoami": {
+    "lambda_description": "API endpoint that we wish to secure",
+    "extends": "common",
+    "authorizer": {
+      "arn": "arn:aws:lambda:ap-southeast-2:<<--benjamin.dog--aws--account--number-->>:function:jwt-demo-authorizer",
+      "result_ttl": 300,
+      "validation_expression": "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
+    },
+    "app_function": "whoami.app",
+    "domain": "whoami.benjamin.dog"
+  }
+}
