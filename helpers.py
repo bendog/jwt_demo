@@ -14,7 +14,7 @@ JWT_DOMAIN = 'benjamin.dog'
 # JWT HELPERS
 
 
-class JSONDateTimeEncoder(json.JSONEncoder):
+class JSONDataEncoder(json.JSONEncoder):
     """ setup a json encoder to convert datetime objects """
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
@@ -40,7 +40,7 @@ def build_jwt(payload: dict) -> str:
         'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=JWT_EXPIRATION_MINUTES),
         **payload
     }
-    return jwt.encode(jwt_fields, key=SECRET_KEY, json_encoder=JSONDateTimeEncoder).decode(encoding='UTF-8')
+    return jwt.encode(jwt_fields, key=SECRET_KEY, json_encoder=JSONDataEncoder).decode(encoding='UTF-8')
 
 
 def verify_jwt(token):

@@ -34,5 +34,16 @@
     },
     "app_function": "whoami.app",
     "domain": "whoami.benjamin.dog"
+  },
+  "users": {
+    "lambda_description": "secure API endpoint for adding and listing users",
+    "extends": "common",
+    "authorizer": {
+      "arn": "arn:aws:lambda:ap-southeast-2:155122333172:function:jwt-demo-authorizer",
+      "result_ttl": 300,
+      "validation_expression": "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
+    },
+    "app_function": "users.app",
+    "domain": "users.benjamin.dog"
   }
 }

@@ -13,9 +13,6 @@ class Login(Resource):
 
     def __init__(self, *args, **kwargs):
         self.parser = reqparse.RequestParser()
-        # email = helpers.email_validator()
-        # phone = helpers.phone_validator()
-        # password = validators.String()
         self.parser.add_argument('username', help="Username does not appear to be valid")
         self.parser.add_argument('password', help="Users Password does not appear to be valid")
 
@@ -45,7 +42,6 @@ class Login(Resource):
 
     def post(self):
         args = self.parser.parse_args()
-        print(args)
         username = args.get('username')
         password = args.get('password')
         try:
