@@ -18,6 +18,12 @@
     "domain": "login.benjamin.dog",
     "app_function": "login.app"
   },
+  "fuelwatch": {
+    "lambda_description": "fuel watch api",
+    "extends": "common",
+    "domain": "fuel.benjamin.dog",
+    "app_function": "fuelwatch.app"
+  },
   "authorizer": {
     "lambda_description": "a custom api gateway authorizer",
     "extends": "common",
