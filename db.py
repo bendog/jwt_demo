@@ -54,5 +54,5 @@ class User(models.Model):
 if not User.exists():
     User.create_table(wait=True, read_capacity_units=1, write_capacity_units=1)
 
-    bendog = User(username='bendog', password='pdpd', github='bendog', groups=['pdpd', 'ausvet', 'djangogirls', 'melbdjanog', 'sailors'])
+    bendog = User(username='bendog', password='pdpd', github='bendog', groups=['pdpd', 'ausvet', 'djangogirls', 'melbdjango', 'sailors'])
     bendog.save()
