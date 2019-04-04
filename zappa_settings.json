@@ -9,7 +9,7 @@
     "certificate_arn": "arn:<<for benjamin.dog domain>>",
     "aws_environment_variables": {
       "SECRET_KEY": "pdpdmeetup",
-      "JWT_EXPIRATION_MINUTES": "1"
+      "JWT_EXPIRATION_MINUTES": "2"
     }
   },
   "login": {
@@ -22,14 +22,14 @@
     "lambda_description": "a custom api gateway authorizer",
     "extends": "common",
     "lambda_handler": "authorizer.lambda_handler",
-    "apigateway_endabled": false
+    "apigateway_enabled": true
   },
   "whoami": {
     "lambda_description": "API endpoint that we wish to secure",
     "extends": "common",
     "authorizer": {
       "arn": "arn:aws:lambda:ap-southeast-2:<<--benjamin.dog--aws--account--number-->>:function:jwt-demo-authorizer",
-      "result_ttl": 300,
+      "result_ttl": 3,
       "validation_expression": "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
     },
     "app_function": "whoami.app",
@@ -40,7 +40,7 @@
     "extends": "common",
     "authorizer": {
       "arn": "arn:aws:lambda:ap-southeast-2:155122333172:function:jwt-demo-authorizer",
-      "result_ttl": 300,
+      "result_ttl": 3,
       "validation_expression": "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
     },
     "app_function": "users.app",
