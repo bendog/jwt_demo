@@ -39,7 +39,7 @@
     "lambda_description": "secure API endpoint for adding and listing users",
     "extends": "common",
     "authorizer": {
-      "arn": "arn:aws:lambda:ap-southeast-2:155122333172:function:jwt-demo-authorizer",
+      "arn": "arn:aws:lambda:ap-southeast-2:<<--benjamin.dog--aws--account--number-->>:function:jwt-demo-authorizer",
       "result_ttl": 3,
       "validation_expression": "^Bearer [A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*$"
     },
